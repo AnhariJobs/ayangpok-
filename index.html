@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Website Pajak & WhatsApp</title>
+  <title>Website Pajak</title>
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
@@ -78,12 +78,12 @@
       <div class="mb-3">
         <label for="hargaBarang" class="form-label">Harga Barang (Rp)</label>
         <input 
-          type="number" 
+          type="text" 
           class="form-control" 
           id="hargaBarang" 
           placeholder="Masukkan harga barang"
-          max="1000000000"
-          oninput="this.value = this.value.replace(/[^0-9]/g, '')" 
+          maxlength="12"
+          oninput="formatRupiah(this)"
         >
       </div>
 
@@ -102,13 +102,19 @@
 
     <!-- Card Footer -->
     <div class="card-footer">
-      <small>&copy; 2024 | Kalkulator Pajak & WhatsApp</small>
+      <small>&copy; 2024 | Kalkulator Pajak</small>
     </div>
   </div>
 
   <script>
+    function formatRupiah(input) {
+      let value = input.value.replace(/[^\d]/g, ''); // Hapus semua karakter selain angka
+      let formattedValue = value.replace(/\B(?=(\d{3})+(?!\d))/g, "."); // Format ke format rupiah
+      input.value = formattedValue; // Set kembali nilai input yang sudah diformat
+    }
+
     function hitungHarga() {
-      const hargaBarang = parseFloat(document.getElementById('hargaBarang').value);
+      const hargaBarang = parseInt(document.getElementById('hargaBarang').value.replace(/\./g, ''));
       const jumlahBarang = parseInt(document.getElementById('jumlahBarang').value);
       const ppn = 0.11; // PPN 11%
 

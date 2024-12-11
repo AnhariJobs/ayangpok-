@@ -112,7 +112,7 @@
       <h3 class="text-center">Kalkulator Pajak</h3>
       <div class="mb-3">
         <label for="hargaBarang" class="form-label">Harga Barang (Rp)</label>
-        <input type="number" class="form-control" id="hargaBarang" placeholder="Masukkan harga barang" oninput="formatHarga()">
+        <input type="number" class="form-control" id="hargaBarang" placeholder="Masukkan harga barang" max="1000000000" oninput="formatHarga()">
       </div>
       <div class="mb-3">
         <label for="jumlahBarang" class="form-label">Jumlah Barang</label>
@@ -171,7 +171,7 @@
       const ppn = 0.11; // PPN 11%
 
       if (hargaBarang && jumlahBarang) {
-        // Menghitung harga sebelum dan setelah PPN
+        // Menghitung harga sebelum PPN (hargaBarang / 1.11)
         const hargaSebelumPPN = hargaBarang / (1 + ppn);
         const hargaSetelahPPN = hargaBarang;
 

@@ -128,12 +128,19 @@
 
         // Format hasil
         document.getElementById('hasilHarga').innerHTML = `
-          <div>Total Harga Sebelum PPN: <strong>Rp ${totalHargaSebelumPPN.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')}</strong></div>
-          <div>Total Harga Setelah PPN: <strong>Rp ${totalHargaSetelahPPN.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')}</strong></div>
+          <div>Total Harga Sebelum PPN: <strong>Rp ${formatRupiahOutput(totalHargaSebelumPPN)}</strong></div>
+          <div>Total Harga Setelah PPN: <strong>Rp ${formatRupiahOutput(totalHargaSetelahPPN)}</strong></div>
         `;
       } else {
         alert("Masukkan harga barang dan jumlah barang yang valid!");
       }
+    }
+
+    function formatRupiahOutput(value) {
+      // Format angka ke format rupiah (titik untuk ribuan dan koma untuk desimal)
+      let [integer, decimal] = value.toFixed(2).split('.');
+      integer = integer.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+      return `${integer},${decimal}`;
     }
   </script>
 

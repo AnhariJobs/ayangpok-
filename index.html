@@ -161,7 +161,14 @@
         rupiah += separator + ribuan.join('.');
       }
 
-      return split[1] ? rupiah + ',' + split[1] : rupiah;
+      // Menambahkan 2 digit di belakang koma
+      if (split[1]) {
+        rupiah += ',' + split[1].substr(0, 2); // Ambil 2 digit pertama setelah koma
+      } else {
+        rupiah += ',00'; // Jika tidak ada desimal, set menjadi 00
+      }
+
+      return rupiah;
     }
 
     // Fitur 1: Menghitung harga sebelum dan setelah PPN dengan Jumlah Barang

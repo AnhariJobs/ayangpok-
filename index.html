@@ -179,10 +179,10 @@
         const totalHargaSebelumPPN = hargaSebelumPPN * jumlahBarang;
         const totalHargaSetelahPPN = hargaSetelahPPN * jumlahBarang;
 
-        // Menampilkan hasil
+        // Menampilkan hasil dengan format ".00"
         document.getElementById('hasilHarga').innerHTML = `
-          <strong>Total Harga Sebelum PPN:</strong> Rp ${formatRupiah(totalHargaSebelumPPN.toFixed(0))}<br>
-          <strong>Total Harga Setelah PPN:</strong> Rp ${formatRupiah(totalHargaSetelahPPN.toFixed(0))}
+          <strong>Total Harga Sebelum PPN:</strong> Rp ${formatRupiah(totalHargaSebelumPPN.toFixed(2))}<br>
+          <strong>Total Harga Setelah PPN:</strong> Rp ${formatRupiah(totalHargaSetelahPPN.toFixed(2))}
         `;
       } else {
         alert("Masukkan harga barang dan jumlah barang yang valid!");
